@@ -5,14 +5,13 @@ const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 
 const bot = new telegramBot(TOKEN);
-bot.setWebHook(`https://mmozgov-heroku-test-bot.herokuapp.com/bot`);
+bot.setWebHook(`https://mmozgov-heroku-test-bot.herokuapp.com/bot${TOKEN}`);
 
 const app = new Koa();
 
 const router = new Router();
-router.post(`/bot`, ctx => {
+router.post(`/bot${TOKEN}`, ctx => {
     const { body } = ctx.request;
-    console.log(body);
 
     bot.processUpdate(body);
     ctx.status = 200;
