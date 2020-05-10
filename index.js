@@ -10,7 +10,7 @@ bot.setWebHook(`https://mmozgov-heroku-test-bot.herokuapp.com/bot`);
 const app = new Koa();
 
 const router = new Router();
-router.post(`bot`, ctx => {
+router.post(`/bot`, ctx => {
     const { body } = ctx.request;
     console.log(body);
 
