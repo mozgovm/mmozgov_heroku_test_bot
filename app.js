@@ -1,12 +1,10 @@
 
-const telegramBot = require("node-telegram-bot-api");
-const TOKEN = process.env.BOT_TOKEN;
-require('dotenv').config()
 const Koa = require('koa');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
-
-const bot = new telegramBot(TOKEN);
+const bot = require('./bot');
+require('dotenv').config();
+const TOKEN = process.env.BOT_TOKEN;
 
 const app = new Koa();
 
@@ -20,9 +18,4 @@ router.post(`/bot${TOKEN}`, ctx => {
 app.use(bodyParser());
 app.use(router.routes());
 
-module.exports = {
-    bot,
-    app
-}
-
-console.log(module.exports);
+module.exports = app;
