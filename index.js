@@ -1,24 +1,11 @@
 const telegramBot = require("node-telegram-bot-api");
-const TOKEN = '1246630721:AAGu9KzYNP4Te5DoaScSFJDJ7qmsm2aIw_4';
-const Koa = require('koa');
-const Router = require('koa-router');
-const bodyParser = require('koa-bodyparser');
+require('dotenv').config()
+const TOKEN = process.env.BOT_TOKEN;
 
 const bot = new telegramBot(TOKEN);
-bot.setWebHook(`https://mmozgov-heroku-test-bot.herokuapp.com/bot${TOKEN}`);
+bot.setWebHook(`https://mmozgov_heroku_test_bot.herokuapp.com/bot${TOKEN}`);
 
-const app = new Koa();
-
-const router = new Router();
-router.post(`/bot${TOKEN}`, ctx => {
-    const { body } = ctx.request;
-
-    bot.processUpdate(body);
-    ctx.status = 200;
-});
-
-app.use(bodyParser());
-app.use(router.routes());
+const app = require('./app');
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
