@@ -13,12 +13,10 @@
     "node": "12.14.1"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^8.0.8",
     "node-telegram-bot-api": "^0.40.0"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0"
   }
 }
